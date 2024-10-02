@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            font-family: "GT-Walsheim-Pro", sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 10px solid black;
+            position: relative;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 300px;/
+        }
+
+        .qrcode {
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .company-name {
+            position: absolute;
+            text-transform: uppercase;
+            padding: 0px 40px 0px 40px;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 25px;
+            font-weight: bold;
+            background-color: white;
+        }
+
+        .person-name {
+            text-transform: uppercase;
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 55px;
+            background-color: white;
+            padding: 0px 40px 0px 40px;
+
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <h2 class="company-name">Glowicom</h2>
+        <div class="qrcode"></div>
+        <h2 class="person-name">Jose Miguel</h2>
+
+    </div>
+
+    <script>
+        let qrcode = new QRCode(document.querySelector(".qrcode"));
+
+        qrcode.makeCode("Why did you scan me?");
+
+        function generateQr() {
+            const input = document.querySelector("input").value;
+            if (input.trim() === "") {
+                alert("Input Field cannot be blank!");
+            } else {
+                qrcode.makeCode(input);
+            }
+        }
+    </script>
+</body>
+
+</html>
